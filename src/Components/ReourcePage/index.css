@@ -1,8 +1,7 @@
 .body {
   margin-top: 120px;
-  height: calc(100% - 150px);
+  height: calc(100vh - 300px);
   width: 100%;
-  overflow: hidden;
 }
 
 .search-box {
@@ -24,22 +23,43 @@
   margin-top: 50px;
 }
 
-.card {
+.resultBox {
+  height: 100%;
   width: 70%;
   margin-left: 15%;
-  padding: 20px 30px;
   margin-top: 20px;
+  margin-bottom: 30px;
+  overflow-y: auto;
+}
+
+.card {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 10px;
+  padding: 20px 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.card a {
+.card .link {
   text-decoration: none;
   border: 1px solid;
   background-color: #0099ff;
   color: white;
   padding: 5px 15px;
+}
+
+button {
+  border: 1px solid;
+  background-color: #0099ff;
+  color: white;
+  padding: 7px 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }

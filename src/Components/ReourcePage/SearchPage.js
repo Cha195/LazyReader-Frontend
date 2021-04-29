@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Header from '../Header'
 import './index.css'
 import search from '../../Assets/search.svg'
@@ -20,6 +21,10 @@ const courseList = [
   {
     'id': 'CSE1004',
     'name': 'Network And Communication'
+  },
+  {
+    'id': 'CSE3009',
+    'name': 'Internet of Things'
   }
 ]
 
@@ -31,7 +36,7 @@ const SearchPage = () => {
     return (
       <div className='card'>
         <h2>{course.id} {course.name}</h2>
-        <a href={`/${course.id}`} type='button'>View</a>
+        <Link className='link' to={`course/${course.id}`} type='button'>View</Link>
       </div>
     )
   }
@@ -43,6 +48,7 @@ const SearchPage = () => {
       if(element['id'].toLowerCase().includes(event.target.value) || element['name'].toLowerCase().includes(event.target.value)) {
         return element
       }
+      return undefined
     })
     courseArray = courseArray.filter(element => {
       return element !== undefined;
@@ -65,19 +71,19 @@ const SearchPage = () => {
             />
           </div>
           {
-            (searchText == '') ? 
+            (searchText === '') ? 
             <div>
-              <img src={search} className='search-image' />
+              <img alt='searchImage' src={search} className='search-image' />
               <h1 style={{ textAlign: 'center', color: '#53E3FE' }}>Start searching!</h1>
             </div>
             :
               (courses.length) ?
-                <div>
+                <div className='resultBox'>
                   {courses.map(courseCard)}
                 </div>
               :
               <div>
-                <img src={searchFailed} className='search-image' />
+                <img alt='searchFailed' src={searchFailed} className='search-image' />
                 <h1 style={{ textAlign: 'center', color: '#53E3FE' }}>No results!</h1>
               </div>
           }
