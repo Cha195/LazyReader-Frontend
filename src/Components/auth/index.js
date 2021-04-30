@@ -27,8 +27,7 @@ const Auth = () => {
           <div className="content">
             <h3>New here ?</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
+              Register and setup your free account in less than a minute!
             </p>
             <button className="btn transparent" name="sign-up" onClick={handleClick}>
               Sign up
@@ -40,8 +39,7 @@ const Auth = () => {
           <div className="content">
             <h3>One of us ?</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
+              Get right back to focus mode and ace all your goals!
             </p>
             <button className="btn transparent" name="sign-in" onClick={handleClick}>
               Sign in

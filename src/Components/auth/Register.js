@@ -2,7 +2,7 @@ import React from 'react'
 
 const Register = () => {
   return(
-    <form action="#" className="sign-up-form">
+    <form action="/search" className="sign-up-form">
       <h2 className="title">Sign up</h2>
       <div className="input-field">
         <i className="fas fa-user"></i>
@@ -20,16 +20,16 @@ const Register = () => {
       <p className="social-text">Or Sign up with social platforms</p>
       <div className="social-media">
         <a href="https://www.facebook.com" className="social-icon">
-          <i className="fab fa-facebook-f"></i>
+          <i className="fa fa-facebook-f"></i>
         </a>
         <a href="https://www.twitter.com" className="social-icon">
-          <i className="fab fa-twitter"></i>
+          <i className="fa fa-twitter"></i>
         </a>
         <a href="https://www.google.com" className="social-icon">
-         <i className="fab fa-google"></i>
+         <i className="fa fa-google"></i>
         </a>
         <a href="https://www.linkedin.com" className="social-icon">
-          <i className="fab fa-linkedin-in"></i>
+          <i className="fa fa-linkedin-in"></i>
         </a>
       </div>
     </form>

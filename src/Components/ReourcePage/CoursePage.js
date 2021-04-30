@@ -1,10 +1,18 @@
 import React from 'react'
 import Header from '../Header'
+import Forum from './Forum'
 
 const CoursePage = ({ match }) => {
   const {
     params: { courseId }
   } = match
+
+  const handleClick = () => {
+    return (
+      <Forum />
+    )
+  } 
+
   return (
     <>
       <Header />
@@ -23,7 +31,7 @@ const CoursePage = ({ match }) => {
         </div>
         <div className='card'>
           <h2>Discussion Forum</h2>
-          <button>Open</button>
+          <button onClick={handleClick}>Open</button>
         </div>
       </div>
     </>

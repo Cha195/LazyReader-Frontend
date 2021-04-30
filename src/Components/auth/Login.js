@@ -2,7 +2,7 @@ import React from 'react'
 
 const Login = () => {
   return (
-    <form action="#" className="sign-in-form">
+    <form action="/search" className="sign-in-form">
       <h2 className="title">Sign in</h2>
       <div className="input-field">
         <i className="fas fa-user"></i>
@@ -12,8 +12,9 @@ const Login = () => {
         <i className="fas fa-lock"></i>
         <input type="password" placeholder="Password" />
       </div>
+      <p style={{ margin: '10px 0' }}>Forgot password?</p>
       <input type="submit" value="Login" className="btn solid" />
-      <p className="social-text">Or Sign in with social platforms</p>
+      {/* <p className="social-text">Or Sign in with social platforms</p>
       <div className="social-media">
         <a href="https://www.facebook.com" className="social-icon">
           <i className="fab fa-facebook-f"></i>
@@ -27,7 +28,7 @@ const Login = () => {
         <a href="https://www.linkedin.com" className="social-icon">
           <i className="fab fa-linkedin-in"></i>
         </a>
-      </div>
+      </div> */}
     </form>
   )
 }
