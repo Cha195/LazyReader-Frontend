@@ -1,5 +1,6 @@
 import './App.css'
-import Auth from './Components/auth'
+import Login from './Components/auth/Login'
+import Register from './Components/auth/Register'
 import { Switch, BrowserRouter, Route } from "react-router-dom"
 import SearchPage from './Components/ReourcePage/SearchPage'
 import CoursePage from './Components/ReourcePage/CoursePage'
@@ -10,7 +11,8 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/auth' component={Auth} />
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
         <Route path='/search' component={SearchPage} />
         <Route path='/course/:courseId' component={CoursePage} />
       </Switch>
