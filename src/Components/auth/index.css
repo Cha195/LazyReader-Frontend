@@ -15,6 +15,13 @@ body, input {
 .login-header {
   margin-top: 30px;
   color: #4d84e2;
+  display: flex;
+  margin-left: 40px;
+}
+
+.login-header img {
+  width: 50px;
+  height: 50px;
 }
 
 .login-wave {

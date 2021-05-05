@@ -1,17 +1,11 @@
 import React from 'react'
 import Header from '../Header'
-import Forum from './Forum'
+import { Link } from 'react-router-dom'
 
 const CoursePage = ({ match }) => {
   const {
     params: { courseId }
   } = match
-
-  const handleClick = () => {
-    return (
-      <Forum />
-    )
-  } 
 
   return (
     <>
@@ -31,7 +25,7 @@ const CoursePage = ({ match }) => {
         </div>
         <div className='card'>
           <h2>Discussion Forum</h2>
-          <button onClick={handleClick}>Open</button>
+          <Link className='link' to={`./${courseId}/forum`} type='button'>Open</Link>
         </div>
       </div>
     </>
