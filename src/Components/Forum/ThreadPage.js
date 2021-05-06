@@ -87,7 +87,7 @@ const ThreadPage = () => {
       </div>
       <div className='message-box'>
         <input
-          className="message-input"
+          className='message-input'
           placeholder="Send a message..."
           value={message}
           onChange={handleChange}
