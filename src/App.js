@@ -5,8 +5,9 @@ import Login from './Components/auth/Login'
 import Register from './Components/auth/Register'
 import SearchPage from './Components/ReourcePage/SearchPage'
 import CoursePage from './Components/ReourcePage/CoursePage'
-import Forum from './Components/ReourcePage/Forum'
-import ThreadPage from './Components/ReourcePage/ThreadPage'
+import Forum from './Components/Forum/Forum'
+import ThreadPage from './Components/Forum/ThreadPage'
+import AddThread from './Components/Forum/AddThread'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/search' component={SearchPage} />
         <Route exact path='/course/:courseId' component={CoursePage} />
         <Route exact path='/course/:courseId/forum' component={Forum} />
+        <Route exact path='/course/:courseId/forum/add' component={AddThread} />
         <Route path='/course/:courseId/forum/:threadId' component={ThreadPage} />
       </Switch>
     </BrowserRouter>

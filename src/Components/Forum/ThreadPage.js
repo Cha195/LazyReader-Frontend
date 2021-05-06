@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './index.css'
 import logo from '../../Assets/logo.png'
 import searchFailed from '../../Assets/searchFailed.svg'
 import avatar from '../../Assets/bandmember.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperclip, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 const CommentList = [
   {
@@ -36,7 +38,7 @@ const ThreadPage = () => {
   // const {
   //   params: { threadId }
   // } = match
-
+  const [message, setMessage] = useState('')
   const commentCard = (comment) => {
     // if (comment.user.id === user.id) {
     //   return (
@@ -56,13 +58,21 @@ const ThreadPage = () => {
     )
   }
 
+  const handleUpload = (event) => {
+    
+  }
+
+  const handleChange = (event) => {
+    setMessage(event.target.value)
+  }
+
   return (
     <div style={{ maxHeight: '100vh' }}>
       <div className='login-header'>
         <img alt='logo' src={logo} />
         <h1 style={{ color: '#0099ff' }} className='title'>Lazy Reader</h1>
       </div>
-      <div className='forum-body'>
+      <div className='forum-body' style={{ height: 'calc(100vh - 250px)', marginBottom: '30px' }}>
         {
           (CommentList.length) ?
             <div className='resultBox'>
@@ -74,6 +84,30 @@ const ThreadPage = () => {
             <h1 style={{ textAlign: 'center', color: '#53E3FE' }}>No Messages!</h1>
           </div>
         }
+      </div>
+      <div className='message-box'>
+        <input
+          className="message-input"
+          placeholder="Send a message..."
+          value={message}
+          onChange={handleChange}
+          // onSubmit={handleSubmit}
+        />
+        <label htmlFor="upload-button">
+          <span className="image-button">
+            <FontAwesomeIcon icon={faPaperclip} />
+          </span>
+        </label>
+        <input
+          type="file"
+          multiple={false}
+          id="upload-button"
+          style={{ display: 'none' }}
+          onChange={handleUpload}
+        />
+        <button type="submit" className="send-button">
+          <FontAwesomeIcon icon={faPaperPlane} />
+        </button>
       </div>
     </div>
   )

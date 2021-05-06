@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './index.css'
 import logo from '../../Assets/logo.png'
 import searchFailed from '../../Assets/searchFailed.svg'
@@ -32,8 +32,8 @@ const ThreadList = [
   }
 ]
 
-const Forum = ({ match }) => {
-
+const Forum = () => {
+  const history = useHistory()
   const [searchText, setSearchText] = useState('')
   const [threads, setThreads] = useState(ThreadList)
   let threadArray
@@ -69,10 +69,6 @@ const Forum = ({ match }) => {
     }
   }
 
-  const handleClick = () => {
-    
-  }
-
   return (
     <div style={{ maxHeight: '100vh' }}>
       <div className='login-header'>
@@ -88,7 +84,7 @@ const Forum = ({ match }) => {
             onChange={handleChange}
             value={searchText}
           />
-          <button onClick={handleClick}>New Post</button>
+          <button onClick={() => history.push('./forum/add')}>New Post</button>
         </div>
         {
           (threads.length) ?

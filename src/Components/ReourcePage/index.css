@@ -4,15 +4,6 @@
   width: 100%;
 }
 
-.forum-body {
-  margin-top: 50px;
-  height: calc(100vh - 150px);
-  width: 100%;
-  margin-bottom: 50px;
-  font-weight: lighter;
-  font-family: Arial, Helvetica, sans-serif
-}
-
 .search-box {
   margin-left: 15%;
   width: 70%;
@@ -74,47 +65,4 @@ button {
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.commentContainer {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.darker {
-  border-color: #ccc;
-  background-color: #ddd;
-}
-
-.commentContainer::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.commentContainer img {
-  float: left;
-  max-width: 60px;
-  width: 100%;
-  margin-right: 20px;
-  border-radius: 50%;
-}
-
-.commentContainer img.right {
-  float: right;
-  margin-left: 20px;
-  margin-right:0;
-}
-
-.time-right {
-  float: right;
-  color: #aaa;
-}
-
-.time-left {
-  float: left;
-  color: #999;
 }
