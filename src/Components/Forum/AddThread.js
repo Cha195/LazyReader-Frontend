@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import Header from '../Header'
 
 const AddThread = ({ match }) => {
   const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
-  const history = useHistory()
+  //const history = useHistory()
 
   const handleClick = () => {
     console.log(match.params)

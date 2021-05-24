@@ -1,36 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../Header'
 import './index.css'
 import search from '../../Assets/search.svg'
 import searchFailed from '../../Assets/searchFailed.svg'
 
-const courseList = [
-  {
-    'id': 'CSE1007',
-    'name': 'Java'
-  },
-  {
-    'id': 'CSE3001',
-    'name': 'Software Engineering'
-  },
-  {
-    'id': 'CSE2004',
-    'name': 'Database Management System'
-  },
-  {
-    'id': 'CSE1004',
-    'name': 'Network And Communication'
-  },
-  {
-    'id': 'CSE3009',
-    'name': 'Internet of Things'
-  }
-]
-
 const SearchPage = () => {
   const [searchText, setSearchText] = useState('')
+  const [courseList, setCourseList] = useState([])
   const [courses, setCourses] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      await fetch('http://localhost:5000/course', {
+        method: 'GET'
+      })
+      .then((res) => {
+        if(res.status === 200) {
+          return res.json()
+        }
+      })
+      .then((res) => {
+        setCourseList(res.map((e) => {
+          return {
+            id: e.courseId,
+            name: e.courseName
+          }
+        }))
+      })
+    }
+    getData()
+  }, [])
 
   const courseCard = (course) => {
     return (
@@ -44,7 +44,6 @@ const SearchPage = () => {
   const handleChange = (event) => {
     setSearchText(event.target.value)
     courseArray = courseList.map(element => {
-      console.log(element['id'])
       if(element['id'].toLowerCase().includes(event.target.value) || element['name'].toLowerCase().includes(event.target.value)) {
         return element
       }
@@ -52,8 +51,7 @@ const SearchPage = () => {
     })
     courseArray = courseArray.filter(element => {
       return element !== undefined;
-   })
-    console.log(courseArray)
+    })
     setCourses(courseArray)
   }
 

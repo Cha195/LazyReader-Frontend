@@ -1,6 +1,5 @@
 .body {
   margin-top: 130px;
-  height: calc(100vh - 300px);
   width: 100%;
 }
 
@@ -136,33 +135,66 @@ button {
   margin-right:0;
 }
 
+.commentContainer p.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:10px;
+}
+
 .time-right {
   float: right;
+  bottom: 0;
   color: #aaa;
 }
 
 .time-left {
   float: left;
+  bottom: 0;
   color: #999;
 }
 
 .message-box {
-  margin-left: 25%;
-  width: 50%;
-}
-
-.message-input {
-  width: 90%;
+  width: 80%;
+  margin-left: 7%;
   padding: 7px;
   border-radius: 10px;
   border: 1px solid black;
   position: relative;
+}
+
+.message-input {
+  width: 90%;
+  position: relative;
   outline: none;
+  border: none;
 }
 
 .image-button {
   position: absolute;
-  left: calc(70% - 23px);
-  bottom: 49px;
+  right: 5px;
+  top: 10px;
   cursor: pointer;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #0099ff
+}
+
+.chip {
+  padding: 0 25px;
+  background-color: #f1f1f1;
+}
+
+.closebtn {
+  padding-left: 10px;
+  color: #888;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  color: #000;
 }

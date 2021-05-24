@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './index.css'
-import logo from '../../Assets/logo.png'
 import searchFailed from '../../Assets/searchFailed.svg'
 
 const ThreadList = [
@@ -40,8 +39,8 @@ const Forum = () => {
 
   const threadCard = (thread) => {
     return (
-      <div className='card'>
-        <h2>{thread.id} | {thread.name}</h2>
+      <div className='card' key={thread.id}>
+        <h2>{thread.name}</h2>
         <div style={{ display: 'flex' }}>
           <h2 style={{ marginRight: '10px' }}>{thread.comments}</h2>
           <Link className='link' to={`./forum/${thread.id}`} type='button'>Open</Link>
@@ -71,9 +70,11 @@ const Forum = () => {
 
   return (
     <div style={{ maxHeight: '100vh' }}>
-      <div className='login-header'>
-        <img src={logo} alt='logo'/>
+      <div className='login-header'  style={{ display: 'flex', justifyContent: 'space-between' }}>
         <h1 style={{ color: '#0099ff' }} className='title'>Lazy Reader</h1>
+        <h2 style={{ color: '#0099ff', marginRight: '60px', fontWeight: '300' }}>
+          <a style={{ textDecoration: 'none' }} href='/'>Logout</a>
+        </h2>
       </div>
       <div className='forum-body'>
         <div className='search-box'>
