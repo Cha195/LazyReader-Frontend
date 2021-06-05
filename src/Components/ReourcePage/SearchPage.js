@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router'
 import Header from '../Header'
 import './index.css'
 import search from '../../Assets/search.svg'
 import searchFailed from '../../Assets/searchFailed.svg'
 
 const SearchPage = () => {
+  const history = useHistory()
   const [searchText, setSearchText] = useState('')
+  const [courseData, setCourseData] = useState([])
   const [courseList, setCourseList] = useState([])
   const [courses, setCourses] = useState([])
 
@@ -21,6 +23,7 @@ const SearchPage = () => {
         }
       })
       .then((res) => {
+        setCourseData(res)
         setCourseList(res.map((e) => {
           return {
             id: e.courseId,
@@ -32,16 +35,31 @@ const SearchPage = () => {
     getData()
   }, [])
 
+  const handleClick = (url, id) => {
+    const data = courseData.filter((course) => {
+      return course.courseId === id
+    })[0]
+    history.push({
+      pathname: url,
+      state: {
+        courseName: data.courseName,
+        bookName: data.bookName,
+        bookLink: data.link
+      }
+    })
+  }
+
   const courseCard = (course) => {
     return (
       <div className='card'>
         <h2>{course.id} {course.name}</h2>
-        <Link className='link' to={`course/${course.id}`} type='button'>View</Link>
+        <div className='link' onClick={() => handleClick(`course/${course.id}`, course.id)} type='button'>View</div>
       </div>
     )
   }
-  let courseArray
+
   const handleChange = (event) => {
+    let courseArray
     setSearchText(event.target.value)
     courseArray = courseList.map(element => {
       if(element['id'].toLowerCase().includes(event.target.value) || element['name'].toLowerCase().includes(event.target.value)) {

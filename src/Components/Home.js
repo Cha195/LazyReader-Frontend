@@ -12,7 +12,7 @@ const Home = () => {
       <div className='home-body'>
         <div className='home-content'>
           <h1>A one-stop solution to all your academic problems!</h1>
-          <h3>Online materials needed for your courses are available.</h3>
+          <h3>Online materials needed for your courses are available here.</h3>
           <div>
             <a className='home-link' style={{ color: 'white' }} href='/login'>Login</a>
             <a className='home-link' href='/register' style={{ marginLeft: '30px', color: 'white' }}>Register</a>

@@ -1,15 +1,41 @@
 import React, { useState } from 'react'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Header from '../Header'
 
 const AddThread = ({ match }) => {
+  const {
+    params: { courseId }
+  } = match
   const [title, setTitle] = useState('')
   const [message, setMessage] = useState('')
-  //const history = useHistory()
+  const history = useHistory()
 
-  const handleClick = () => {
-    console.log(match.params)
-    // history.push('/')
+  const handleClick = async () => {
+    const data = {
+      title,
+      Comment: {
+        Name: 'Rahul',
+        Message: message,
+        timeSent: '24 May 2021'
+      }
+    }
+    await fetch(`http://localhost:5000/course/${courseId}/forum`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then((res) => {
+      console.log(res)
+      if(res.status === 200) {
+        return res.json()
+      }
+    })
+    .then((res) => {
+      console.log(res)
+      history.push(`/${res.id}`)
+    })
   }
 
   const handleChange = (event) => {

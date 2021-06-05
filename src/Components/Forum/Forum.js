@@ -1,48 +1,47 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './index.css'
 import searchFailed from '../../Assets/searchFailed.svg'
 
-const ThreadList = [
-  {
-    'id': '1',
-    'name': 'Server Pages',
-    'comments': '3'
-  },
-  {
-    'id': '2',
-    'name': 'JavaFX',
-    'comments': '2'
-  },
-  {
-    'id': '3',
-    'name': 'JSP doubt!',
-    'comments': '4'
-  },
-  {
-    'id': '4',
-    'name': 'Help please!',
-    'comments': '1'
-  },
-  {
-    'id': '5',
-    'name': 'Im gonna cry!',
-    'comments': '1'
-  }
-]
-
-const Forum = () => {
+const Forum = ({ match }) => {
+  const {
+    params: { courseId }
+  } = match
   const history = useHistory()
+
   const [searchText, setSearchText] = useState('')
-  const [threads, setThreads] = useState(ThreadList)
-  let threadArray
+  const [threadList, setThreadList] = useState([])
+  const [threads, setThreads] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      await fetch(`http://localhost:5000/course/${courseId}/forum`)
+      .then((res) => {
+        console.log(res);
+        if(res.status === 200) {
+          return res.json()
+        }
+      })
+      .then((res) => {
+        console.log(res)
+        setThreadList(res)
+        setThreads(res.map((e) => {
+          return {
+            id: e.id,
+            title: e.title
+          }
+        }))
+      })
+    }
+    getData()
+  }, [courseId])
 
   const threadCard = (thread) => {
+    console.log(thread);
     return (
       <div className='card' key={thread.id}>
-        <h2>{thread.name}</h2>
+        <h2>{thread.title}</h2>
         <div style={{ display: 'flex' }}>
-          <h2 style={{ marginRight: '10px' }}>{thread.comments}</h2>
           <Link className='link' to={`./forum/${thread.id}`} type='button'>Open</Link>
         </div>
       </div>
@@ -50,11 +49,13 @@ const Forum = () => {
   }
 
   const handleChange = (event) => {
+    let threadArray
     setSearchText(event.target.value)
+  
     if(event.target.value === '') {
-      setThreads(ThreadList)
+      setThreads(threadList)
     } else {
-      threadArray = ThreadList.map(e => {
+      threadArray = threadList.map(e => {
         const query = event.target.value
         if(e['id'].toLowerCase().includes(query) || e['name'].toLowerCase().includes(query)) {
           return e
