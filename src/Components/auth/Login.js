@@ -24,7 +24,7 @@ const Login = () => {
       password
     }
 
-    fetch('http://localhost:5000/login', {
+    fetch('https://lazy-reader-backend.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

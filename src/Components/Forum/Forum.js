@@ -15,7 +15,7 @@ const Forum = ({ match }) => {
 
   useEffect(() => {
     const getData = async () => {
-      await fetch(`http://localhost:5000/course/${courseId}/forum`)
+      await fetch(`https://lazy-reader-backend.herokuapp.com/course/${courseId}/forum`)
       .then((res) => {
         console.log(res);
         if(res.status === 200) {

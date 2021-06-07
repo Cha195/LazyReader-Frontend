@@ -31,7 +31,7 @@ const Register = () => {
       password
     }
 
-    fetch('http://localhost:5000/register', {
+    fetch('https://lazy-reader-backend.herokuapp.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

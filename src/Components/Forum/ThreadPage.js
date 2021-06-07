@@ -65,7 +65,7 @@ const ThreadPage = ({ match }) => {
       }
     }
 
-    fetch(`http://localhost:5000/course/${courseId}/forum/${threadId}`, {
+    fetch(`https://lazy-reader-backend.herokuapp.com/course/${courseId}/forum/${threadId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

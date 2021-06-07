@@ -14,7 +14,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      await fetch('http://localhost:5000/course', {
+      await fetch('https://lazy-reader-backend.herokuapp.com/course', {
         method: 'GET'
       })
       .then((res) => {

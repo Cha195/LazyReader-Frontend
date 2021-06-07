@@ -19,7 +19,7 @@ const AddThread = ({ match }) => {
         timeSent: '24 May 2021'
       }
     }
-    await fetch(`http://localhost:5000/course/${courseId}/forum`, {
+    await fetch(`https://lazy-reader-backend.herokuapp.com/course/${courseId}/forum`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
