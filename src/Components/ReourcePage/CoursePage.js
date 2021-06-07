@@ -7,10 +7,25 @@ const CoursePage = ({ match }) => {
     params: { courseId }
   } = match
   const location = useLocation()
-  const { courseName, bookName, bookLink } = location.state
+  const { 
+    courseName,
+    bookName,
+    bookLink,
+    playListName,
+    playListLink,
+    channelName
+  } = location.state
+
+  console.log(playListName,
+    playListLink,
+    channelName)
 
   const viewBook = () => {
     window.open('' + bookLink)
+  }
+
+  const handlePlay = () => {
+    window.open('' + playListLink)
   }
 
   // const downloadBook = () => {
@@ -30,8 +45,8 @@ const CoursePage = ({ match }) => {
           </div>
         </div>
         <div className='card'>
-          <h2>Youtube</h2>
-          <button>Play</button>
+          <h2 style={{ overflowX: 'auto' }}>{playListName} by {channelName}</h2>
+          <button onClick={handlePlay}>Play</button>
         </div>
         <div className='card'>
           <h2>Discussion Forum</h2>

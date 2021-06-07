@@ -25,6 +25,7 @@ const Register = () => {
   const onSubmit = async (event) => {
     event.preventDefault()
     setDisabled(true)
+    console.log(username)
     const data = {
       email,
       password

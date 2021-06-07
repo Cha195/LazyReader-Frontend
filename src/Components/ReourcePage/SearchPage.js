@@ -44,7 +44,10 @@ const SearchPage = () => {
       state: {
         courseName: data.courseName,
         bookName: data.bookName,
-        bookLink: data.link
+        bookLink: data.link,
+        playListLink: data.playListLink,
+        playListName: data.playListName,
+        channelName: data.channelName
       }
     })
   }

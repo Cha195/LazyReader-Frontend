@@ -28,13 +28,11 @@ const AddThread = ({ match }) => {
     })
     .then((res) => {
       console.log(res)
-      if(res.status === 200) {
-        return res.json()
-      }
+      return res.json()
     })
-    .then((res) => {
-      console.log(res)
-      history.push(`/${res.id}`)
+    .then((data) => {
+      console.log(data.id)
+      history.push(data.id)
     })
   }
 
@@ -49,6 +47,7 @@ const AddThread = ({ match }) => {
     <div>
       <Header />
       <div className='body'>
+        <h1 style={{ margin: '50px 0px', textAlign: 'center' }}>Add a new thread</h1>
         <div className='add-box'>
           <input 
             onChange={handleChange}

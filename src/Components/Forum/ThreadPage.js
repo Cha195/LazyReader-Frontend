@@ -4,56 +4,6 @@ import searchFailed from '../../Assets/searchFailed.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperclip, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
-String.prototype.toHHMMSS = function () {
-  var sec_num = parseInt(this, 10); // don't forget the second param
-  var hours   = Math.floor(sec_num / 3600);
-  var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-  var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-  if (hours   < 10) {hours   = "0"+hours;}
-  if (minutes < 10) {minutes = "0"+minutes;}
-  if (seconds < 10) {seconds = "0"+seconds;}
-  return hours+':'+minutes+':'+seconds;
-}
-
-// const CommentList = [
-//   {
-//     'id': '1',
-//     'userId': '12345',
-//     'username': 'Mark',
-//     'message': 'This is wrong',
-//     'time': '11:01'
-//   },
-//   {
-//     'id': '2',
-//     'userId': '12346',
-//     'username': 'Julie',
-//     'message': "Can you explain what's wrong?",
-//     'time': '12:27'
-//   },
-//   {
-//     'id': '3',
-//     'userId': '12345',
-//     'username': 'Mark',
-//     'message': 'Yeah sure',
-//     'time': '12:43'
-//   },
-//   {
-//     'id': '4',
-//     'userId': '12345',
-//     'username': 'Mark',
-//     'message': 'This is how you do it',
-//     'time': '2:14'
-//   },
-//   {
-//     'id': '5',
-//     'userId': '12346',
-//     'username': 'Julie',
-//     'message': 'Thanks a lot!',
-//     'time': '3:02'
-//   }
-// ]
-
 const ThreadPage = ({ match }) => {
   const {
     params: { courseId, threadId }
@@ -76,13 +26,13 @@ const ThreadPage = ({ match }) => {
           return {
             name: e.Name,
             message: e.Message,
-            time: (e.timeSent.toHHMMSS)
+            time: (e.timeSent.toISOString())
           }
         }))
       })
     }
     getData()
-  }, [])
+  }, [courseId, threadId])
 
   const commentCard = (comment) => {
     if (comment.userId === '12346') {
